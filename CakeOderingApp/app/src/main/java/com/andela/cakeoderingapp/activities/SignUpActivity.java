@@ -1,17 +1,22 @@
 package com.andela.cakeoderingapp.activities;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 
 import com.andela.cakeoderingapp.R;
+import com.andela.cakeoderingapp.utilities.Constants;
 import com.andela.cakeoderingapp.utilities.Launcher;
 import com.andela.cakeoderingapp.utilities.SoftKeyboard;
+import com.firebase.client.AuthData;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+
+import java.util.Map;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -20,6 +25,7 @@ public class SignUpActivity extends AppCompatActivity {
     private EditText passwordEditText;
     private Button signUpButton;
     private Button existingAccountButton;
+    private LinearLayout signUpLinearLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,15 +35,16 @@ public class SignUpActivity extends AppCompatActivity {
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
         initializeComponents();
+        Firebase.setAndroidContext(this);
     }
 
     private void initializeComponents() {
@@ -47,6 +54,7 @@ public class SignUpActivity extends AppCompatActivity {
         passwordEditText = (EditText)findViewById(R.id.password_text);
         signUpButton = (Button)findViewById(R.id.signup_button);
         existingAccountButton = (Button)findViewById(R.id.existing_account_button);
+        signUpLinearLayout = (LinearLayout)findViewById(R.id.signup_container);
     }
 
     public void signIn(View view) {
@@ -56,8 +64,8 @@ public class SignUpActivity extends AppCompatActivity {
     }
     
     public void signUp(View view) {
-        
-       SoftKeyboard.hide(this);
+
+        SoftKeyboard.hide(this);
 
         final String fullName = fullNameEditText.getText().toString().trim();
         final String email = emailEditText.getText().toString().trim();
@@ -73,10 +81,31 @@ public class SignUpActivity extends AppCompatActivity {
             passwordEditText.setError(getResources().getString(R.string.password_missing));
 
         } else {
-            //signUpButton.setText(R.string.signing_up);
-            //signUpButton.setEnabled(false);
-            //signUp(fullName,email,password);
+
+            signUpButton.setText(R.string.signing_up);
+            signUp(fullName, email, password);
+
         }
+    }
+
+    private void signUp(String fullName,String email,String password) {
+
+        Constants.firebaseRef.createUser(email, password, new Firebase.ValueResultHandler<Map<String, Object>>() {
+
+            @Override
+            public void onSuccess(Map<String, Object> result) {
+                //System.out.println("Successfully created user account with uid: " + result.get("uid"));
+                Snackbar.make(signUpLinearLayout,"User successfully created",Snackbar.LENGTH_LONG).show();
+                Launcher.launchActivity(getApplicationContext(),SignInActivity.class);
+            }
+
+            @Override
+            public void onError(FirebaseError firebaseError) {
+                // there was an error
+                signUpButton.setEnabled(true);
+                Snackbar.make(signUpLinearLayout,"Unable to create user",Snackbar.LENGTH_LONG).show();
+            }
+        });
     }
 
 
