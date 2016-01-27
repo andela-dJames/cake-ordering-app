@@ -1,5 +1,7 @@
 package com.andela.cakeoderingapp.utilities;
 
+import android.os.ParcelUuid;
+
 import com.firebase.client.Firebase;
 
 /**
@@ -8,5 +10,6 @@ import com.firebase.client.Firebase;
 public class Constants {
 
     public static Firebase firebaseRef = new Firebase("https://cakeonthefly.firebaseIO.com");
-
+    public static String CURRENT_USER = "";
+    public static String DEFAULT_USER = "";
 }

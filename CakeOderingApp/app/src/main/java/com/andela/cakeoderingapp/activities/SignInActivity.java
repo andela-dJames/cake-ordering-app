@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import com.andela.cakeoderingapp.R;
 import com.andela.cakeoderingapp.utilities.Constants;
 import com.andela.cakeoderingapp.utilities.Launcher;
+import com.andela.cakeoderingapp.utilities.SharedPreferenceManager;
 import com.firebase.client.AuthData;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -23,6 +24,8 @@ public class SignInActivity extends AppCompatActivity {
     private EditText passwordEditText;
     private Button signInButton;
     private LinearLayout signInLayout;
+    private SharedPreferenceManager sharedPreferenceManager;
+    private String email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,18 +49,22 @@ public class SignInActivity extends AppCompatActivity {
         passwordEditText = (EditText)findViewById(R.id.password_text);
         signInButton = (Button)findViewById(R.id.signin_button);
         signInLayout = (LinearLayout)findViewById(R.id.signin_layout);
+
+        email = "";
+
+        sharedPreferenceManager = new SharedPreferenceManager(this);
     }
 
 
     public void signIn(View view) {
 
-        String email = emailEditText.getText().toString().trim();
+        email = emailEditText.getText().toString().trim();
         String password = passwordEditText.getText().toString().trim();
 
         signIn(email,password);
     }
 
-    private void signIn(String email, String password) {
+    private void signIn(final String email, String password) {
 
         Constants.firebaseRef.authWithPassword(email, password, new Firebase.AuthResultHandler() {
 
@@ -65,6 +72,7 @@ public class SignInActivity extends AppCompatActivity {
             public void onAuthenticated(AuthData authData) {
 
                 //System.out.println("User ID: " + authData.getUid() + ", Provider: " + authData.getProvider());
+                sharedPreferenceManager.saveCurrentUser(email);
                 Launcher.launchActivity(SignInActivity.this,MainActivity.class);
             }
 
