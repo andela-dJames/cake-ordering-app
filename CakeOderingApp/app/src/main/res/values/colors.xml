@@ -5,4 +5,6 @@
     <color name="colorAccent">#FF4081</color>
     <color name="whiteColor">#ffffff</color>
     <color name="backgroundColor">#009688</color>
+    <color name="white_view_pressed_color">#61ffffff</color>
+    <color name="white_view_color">@android:color/transparent</color>
 </resources>

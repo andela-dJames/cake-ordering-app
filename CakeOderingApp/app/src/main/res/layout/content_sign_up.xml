@@ -80,6 +80,16 @@
 
         </android.support.design.widget.TextInputLayout>
 
+        <com.andela.cakeoderingapp.utilities.TogglePasswordVisibility
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="@dimen/toggle_password_visibility_padding"
+            android:background="@drawable/white_view_state_list"
+            app:passwordEditText="@id/password_text"
+            app:passwordInvisibleImageResource="@drawable/ic_visibility_white_18dp"
+            app:passwordVisibleImageResource="@drawable/ic_visibility_off_white_18dp" />
+
 
     </LinearLayout>
 
