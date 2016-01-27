@@ -57,11 +57,11 @@ public class SignUpActivity extends AppCompatActivity {
         signUpLinearLayout = (LinearLayout)findViewById(R.id.signup_container);
     }
 
-    public void signIn(View view) {
-
-        Launcher.launchActivity(this, SignInActivity.class);
-
-    }
+//    public void signIn(View view) {
+//
+//        Launcher.launchActivity(this, SignInActivity.class);
+//
+//    }
     
     public void signUp(View view) {
 
@@ -95,19 +95,23 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onSuccess(Map<String, Object> result) {
                 //System.out.println("Successfully created user account with uid: " + result.get("uid"));
-                Snackbar.make(signUpLinearLayout,"User successfully created",Snackbar.LENGTH_LONG).show();
-                Launcher.launchActivity(getApplicationContext(),SignInActivity.class);
+                Snackbar.make(signUpLinearLayout, "User successfully created", Snackbar.LENGTH_LONG).show();
+                Launcher.launchActivity(SignUpActivity.this, SignInActivity.class);
             }
 
             @Override
             public void onError(FirebaseError firebaseError) {
                 // there was an error
                 signUpButton.setEnabled(true);
-                Snackbar.make(signUpLinearLayout,"Unable to create user",Snackbar.LENGTH_LONG).show();
+                signUpButton.setText("Sign Up");
+                Snackbar.make(signUpLinearLayout, "Unable to create user", Snackbar.LENGTH_LONG).show();
             }
         });
     }
 
+    public void signIn(View view) {
 
+        Launcher.launchActivity(this,SignInActivity.class);
+    }
 
 }
