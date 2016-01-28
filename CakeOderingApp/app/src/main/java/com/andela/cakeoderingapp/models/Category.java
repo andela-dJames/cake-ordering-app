@@ -7,6 +7,9 @@ import java.util.List;
  */
 public class Category extends Model{
 
+    public String description;
+    public String imageUrl;
+
     public Category() {
 
     }
@@ -15,13 +18,19 @@ public class Category extends Model{
         super(id, name);
     }
 
-    private List<Cake>cakes;
-
-    public List<Cake> getCakes() {
-        return cakes;
+    public String getDescription() {
+        return description;
     }
 
-    public void setCakes(List<Cake> cakes) {
-        this.cakes = cakes;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

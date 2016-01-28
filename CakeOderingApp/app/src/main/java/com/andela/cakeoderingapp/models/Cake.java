@@ -3,7 +3,7 @@ package com.andela.cakeoderingapp.models;
 
 public class Cake extends Model {
 
-    //private Category category;
+    private String category;
     private String snapshot;
 
     public Cake() {
@@ -26,12 +26,11 @@ public class Cake extends Model {
         this.snapshot = snapshot;
     }
 
+    public String getCategory() {
+        return category;
+    }
 
-//    public Category getCategory() {
-//        return category;
-//    }
-
-//    public void setCategory(Category category) {
-//        this.category = category;
-//    }
+    public void setCategory(String category) {
+        this.category = category;
+    }
 }
