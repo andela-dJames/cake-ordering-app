@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="869fedc3-7c33-4a03-9d23-801f81b968b5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CakeOderingApp/app/src/main/java/com/andela/cakeoderingapp/utilities/Constants.java" afterPath="$PROJECT_DIR$/CakeOderingApp/app/src/main/java/com/andela/cakeoderingapp/utilities/Constants.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CakeOderingApp/app/src/main/java/com/andela/cakeoderingapp/activities/MainActivity.java" afterPath="$PROJECT_DIR$/CakeOderingApp/app/src/main/java/com/andela/cakeoderingapp/activities/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CakeOderingApp/app/src/main/java/com/andela/cakeoderingapp/activities/SignInActivity.java" afterPath="$PROJECT_DIR$/CakeOderingApp/app/src/main/java/com/andela/cakeoderingapp/activities/SignInActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CakeOderingApp/app/src/main/res/values/colors.xml" afterPath="$PROJECT_DIR$/CakeOderingApp/app/src/main/res/values/colors.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CakeOderingApp/app/src/main/res/values/dimens.xml" afterPath="$PROJECT_DIR$/CakeOderingApp/app/src/main/res/values/dimens.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CakeOderingApp/.idea/misc.xml" afterPath="$PROJECT_DIR$/CakeOderingApp/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CakeOderingApp/app/src/main/res/layout/nav_header_main.xml" afterPath="$PROJECT_DIR$/CakeOderingApp/app/src/main/res/layout/nav_header_main.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CakeOderingApp/app/src/main/res/values/styles.xml" afterPath="$PROJECT_DIR$/CakeOderingApp/app/src/main/res/values/styles.xml" />
     </list>
     <ignored path="cake-ordering-app.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -56,7 +49,7 @@
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="AndroidView" proportions="" version="1">
+    <navigator currentView="Scratches" proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -68,44 +61,15 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cake-ordering-app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cake-ordering-app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cake-ordering-app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cake-ordering-app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cake-ordering-app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CakeOderingApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
+      <pane id="Scratches">
+        <subPane />
       </pane>
       <pane id="AndroidView">
         <subPane />
       </pane>
-      <pane id="Scratches" />
+      <pane id="PackagesPane">
+        <subPane />
+      </pane>
       <pane id="Scope">
         <subPane subId="Project Files">
           <PATH>
@@ -152,8 +116,39 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane">
-        <subPane />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cake-ordering-app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cake-ordering-app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cake-ordering-app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cake-ordering-app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cake-ordering-app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CakeOderingApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
       </pane>
     </panes>
   </component>
@@ -163,7 +158,7 @@
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
     <property name="settings.editor.selected.configurable" value="Template Data Languages" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/CakeOderingApp" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../.." />
   </component>
   <component name="RunManager">
     <configuration default="true" type="Application" factoryName="Application">

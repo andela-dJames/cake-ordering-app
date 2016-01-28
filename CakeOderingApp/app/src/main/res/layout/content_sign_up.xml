@@ -103,7 +103,7 @@
         android:onClick="signUp"
         android:textStyle="bold"
         android:textSize="18sp"
-        android:textColor="@color/backgroundColor"/>
+        android:textColor="@color/colorAccent"/>
 
     <Button
         android:id="@+id/existing_account_button"
@@ -114,6 +114,6 @@
         android:textSize="18sp"
         style="?android:attr/borderlessButtonStyle"
         android:onClick="signIn"
-        android:textColor="@color/backgroundColor"/>
+        android:textColor="@color/colorAccent"/>
 
 </LinearLayout>
