@@ -44,7 +44,7 @@ public class SignUpActivity extends AppCompatActivity {
 //            }
 //        });
         initializeComponents();
-        Firebase.setAndroidContext(this);
+
     }
 
     private void initializeComponents() {
