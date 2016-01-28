@@ -13,7 +13,7 @@
 # Generated files
 bin/
 gen/
-
+.idea/misc.xml
 # Gradle files
 .gradle/
 build/
