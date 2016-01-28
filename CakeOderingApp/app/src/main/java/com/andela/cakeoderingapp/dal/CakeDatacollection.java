@@ -2,8 +2,12 @@ package com.andela.cakeoderingapp.dal;
 
 import com.andela.cakeoderingapp.models.Model;
 import com.andela.cakeoderingapp.utilities.Constants;
+import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CakeDatacollection<T extends Model> implements DataCollection<T> {
@@ -24,7 +28,7 @@ public class CakeDatacollection<T extends Model> implements DataCollection<T> {
                 .child(data.getId())
                 .setValue(data);
         if (callback !=null){
-            callback.onSuccess(data.getId());
+            callback.onSuccess(data);
         }
 
     }
@@ -35,7 +39,25 @@ public class CakeDatacollection<T extends Model> implements DataCollection<T> {
     }
 
     @Override
-    public void getAll(DataCallback<List<T>> callback) {
+    public void getAll(final DataCallback<List<T>> callback) {
+
+        firebase.child(childName)
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        List<T> data = new ArrayList<>();
+
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                            data.add(snapshot.getValue(type));
+                        }
+                        callback.onSuccess(data);
+                    }
+
+                    @Override
+                    public void onCancelled(FirebaseError firebaseError) {
+                        callback.onError(firebaseError.getMessage());
+                    }
+                });
 
     }
 

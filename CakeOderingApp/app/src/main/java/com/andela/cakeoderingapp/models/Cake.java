@@ -1,11 +1,9 @@
 package com.andela.cakeoderingapp.models;
 
-/**
- * Created by andela-jugba on 1/25/16.
- */
+
 public class Cake extends Model {
 
-    private Category category;
+    //private Category category;
     private String snapshot;
 
     public Cake() {
@@ -29,11 +27,11 @@ public class Cake extends Model {
     }
 
 
-    public Category getCategory() {
-        return category;
-    }
+//    public Category getCategory() {
+//        return category;
+//    }
 
-    public void setCategory(Category category) {
-        this.category = category;
-    }
+//    public void setCategory(Category category) {
+//        this.category = category;
+//    }
 }
