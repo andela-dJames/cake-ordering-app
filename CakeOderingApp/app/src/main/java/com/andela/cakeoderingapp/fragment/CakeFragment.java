@@ -14,6 +14,14 @@ import com.andela.cakeoderingapp.R;
  */
 public class CakeFragment  extends Fragment{
 
+    public CakeFragment() {
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
