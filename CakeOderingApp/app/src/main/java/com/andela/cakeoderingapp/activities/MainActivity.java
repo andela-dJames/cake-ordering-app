@@ -5,6 +5,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -17,11 +18,16 @@ import android.view.MenuItem;
 
 import com.andela.cakeoderingapp.R;
 import com.andela.cakeoderingapp.adapter.ViewPagerAdapter;
+import com.andela.cakeoderingapp.dal.CakeDatacollection;
+import com.andela.cakeoderingapp.dal.DataCallback;
 import com.andela.cakeoderingapp.fragment.CakeFragment;
+import com.andela.cakeoderingapp.models.Cake;
+import com.andela.cakeoderingapp.models.Category;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private static final String TAG = "SAVE The Cake";
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
@@ -44,11 +50,13 @@ public class MainActivity extends AppCompatActivity
         setUpViewPager(viewPager);
         tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(viewPager);
+        saveCategories();
     }
     private void setUpViewPager(ViewPager viewPager) {
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPagerAdapter.addFragment(new CakeFragment(), "Categories");
-        viewPagerAdapter.addFragment(new CakeFragment(), "Categories");
+        viewPagerAdapter.addFragment(new CakeFragment(), "Featured");
+        viewPagerAdapter.addFragment(new CakeFragment(), "All");
         viewPager.setAdapter(viewPagerAdapter);
     }
 
@@ -82,6 +90,46 @@ public class MainActivity extends AppCompatActivity
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void saveCategories() {
+        Category category = new Category("8", "Homestyle pies");
+        category.setImageUrl("http://res.cloudinary.com/dzvxhhjz1/image/upload/v1454082911/Categories/homestyle_pies.jpg");
+                category.setDescription("Celebrate with family, friends and Carousel Cakes...");
+        CakeDatacollection<Category> col = new CakeDatacollection<>("categories", Category.class);
+        col.save(category, new DataCallback<Category>() {
+            @Override
+            public void onSuccess(Category value) {
+
+            }
+
+            @Override
+            public void onError(String error) {
+
+            }
+        });
+
+
+    }
+
+    public void saveCakes() {
+        Cake cake1 = new Cake("002", "Bricoe");
+        cake1.setPrice("N 2,300");
+        cake1.setSnapshot("http://res.cloudinary.com/dzvxhhjz1/image/upload/v1454082911/Categories/holiday_cakes.jpg");
+        cake1.setCategory("Wedding cake");
+        CakeDatacollection<Cake> col = new CakeDatacollection<>("cakes", Cake.class);
+        col.save(cake1, new DataCallback<Cake>() {
+            @Override
+            public void onSuccess(Cake value) {
+                Log.d(TAG, value.getSnapshot());
+            }
+
+            @Override
+            public void onError(String error) {
+
+            }
+        });
+
     }
 
     @SuppressWarnings("StatementWithEmptyBody")

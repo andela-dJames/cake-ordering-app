@@ -3,8 +3,9 @@ package com.andela.cakeoderingapp.models;
 
 public class Cake extends Model {
 
-    //private Category category;
+    private String category;
     private String snapshot;
+    private String price;
 
     public Cake() {
 
@@ -14,8 +15,8 @@ public class Cake extends Model {
         super(id);
     }
 
-    public Cake(String id,String name) {
-        super(id,name);
+    public Cake(String id, String name) {
+        super(id, name);
     }
 
     public String getSnapshot() {
@@ -26,12 +27,19 @@ public class Cake extends Model {
         this.snapshot = snapshot;
     }
 
+    public String getPrice() {
+        return price;
+    }
 
-//    public Category getCategory() {
-//        return category;
-//    }
+    public void setPrice(String price) {
+        this.price = price;
+    }
 
-//    public void setCategory(Category category) {
-//        this.category = category;
-//    }
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
 }
