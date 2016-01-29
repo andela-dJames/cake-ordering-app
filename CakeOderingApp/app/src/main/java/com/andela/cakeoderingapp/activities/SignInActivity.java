@@ -76,8 +76,6 @@ public class SignInActivity extends AppCompatActivity {
             public void onAuthenticated(AuthData authData) {
 
                 user.setId(authData.getUid());
-                sharedPreferenceManager.saveCurrentId(user.getId());
-                //System.out.println("User ID: " + authData.getUid() + ", Provider: " + authData.getProvider());
                 sharedPreferenceManager.saveCurrentUser(email);
                 Launcher.launchActivity(SignInActivity.this,MainActivity.class);
             }

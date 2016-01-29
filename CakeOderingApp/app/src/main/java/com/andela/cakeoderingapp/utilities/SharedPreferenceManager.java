@@ -30,15 +30,15 @@ public class SharedPreferenceManager {
         return sharedPref.getString(Constants.CURRENT_USER, Constants.DEFAULT_USER);
     }
 
-    public void saveCurrentId(String currentUser) {
+    public void saveCurrentId(String currentUserId) {
 
-        editor.putString(Constants.CURRENT_USER, currentUser);
+        editor.putString(Constants.CURRENT_USERID, currentUserId);
         editor.commit();
     }
 
     public String retrieveCurrentId() {
 
-        return sharedPref.getString(Constants.CURRENT_USER, Constants.DEFAULT_USER);
+        return sharedPref.getString(Constants.CURRENT_USERID, Constants.DEFAULT_USER);
     }
 
 }

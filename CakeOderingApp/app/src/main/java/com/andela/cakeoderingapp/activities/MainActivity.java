@@ -61,13 +61,11 @@ public class MainActivity extends AppCompatActivity
 
         navigationView.addHeaderView(header);
 
-        SharedPreferenceManager sharedPreferenceManager = new SharedPreferenceManager(this);
-
         TextView emailText = (TextView)header.findViewById(R.id.email_text);
+
+        sharedPreferenceManager = new SharedPreferenceManager(MainActivity.this);
+
         emailText.setText(sharedPreferenceManager.retrieveCurrentUser());
-
-        sharedPreferenceManager = new SharedPreferenceManager(this);
-
 
     }
 
@@ -128,22 +126,5 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    public void getUserFullName() {
 
-        Query queryRef = Constants.firebaseRef.orderByChild(sharedPreferenceManager.retrieveCurrentId() + "/FullName");
-
-        queryRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                //System.out.println(snapshot.getValue());
-                Log.d("snapshot",snapshot.getValue().toString());
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-                //System.out.println("The read failed: " + firebaseError.getMessage());
-            }
-        });
-
-    }
 }
