@@ -3,6 +3,7 @@ package com.andela.cakeoderingapp.activities;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -16,10 +17,19 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.andela.cakeoderingapp.R;
+import com.andela.cakeoderingapp.utilities.Constants;
 import com.andela.cakeoderingapp.utilities.SharedPreferenceManager;
+import com.firebase.client.ChildEventListener;
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.Query;
+import com.firebase.client.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private SharedPreferenceManager sharedPreferenceManager;
 
 
     @Override
@@ -55,6 +65,8 @@ public class MainActivity extends AppCompatActivity
 
         TextView emailText = (TextView)header.findViewById(R.id.email_text);
         emailText.setText(sharedPreferenceManager.retrieveCurrentUser());
+
+        sharedPreferenceManager = new SharedPreferenceManager(this);
 
 
     }
@@ -114,5 +126,24 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void getUserFullName() {
+
+        Query queryRef = Constants.firebaseRef.orderByChild(sharedPreferenceManager.retrieveCurrentId() + "/FullName");
+
+        queryRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                //System.out.println(snapshot.getValue());
+                Log.d("snapshot",snapshot.getValue().toString());
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+                //System.out.println("The read failed: " + firebaseError.getMessage());
+            }
+        });
+
     }
 }

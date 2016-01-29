@@ -15,7 +15,14 @@ public class User extends Model {
     }
 
     public User(String id) {
+
         super(id);
+    }
+
+    public User (String id, String name) {
+
+        super(id,name);
+
     }
 
     public String getFullName() {

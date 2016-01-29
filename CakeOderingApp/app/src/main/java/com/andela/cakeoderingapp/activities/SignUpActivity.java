@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import com.andela.cakeoderingapp.R;
+import com.andela.cakeoderingapp.models.User;
 import com.andela.cakeoderingapp.utilities.Constants;
 import com.andela.cakeoderingapp.utilities.Launcher;
 import com.andela.cakeoderingapp.utilities.SoftKeyboard;
@@ -16,6 +17,7 @@ import com.firebase.client.AuthData;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class SignUpActivity extends AppCompatActivity {
@@ -88,13 +90,16 @@ public class SignUpActivity extends AppCompatActivity {
         }
     }
 
-    private void signUp(String fullName,String email,String password) {
+    private void signUp(final String fullName,final String email,String password) {
 
         Constants.firebaseRef.createUser(email, password, new Firebase.ValueResultHandler<Map<String, Object>>() {
-
             @Override
             public void onSuccess(Map<String, Object> result) {
-                //System.out.println("Successfully created user account with uid: " + result.get("uid"));
+
+                Firebase profileRef = Constants.firebaseRef.child("Users").child(result.get("uid").toString());
+                profileRef.child("FullName").setValue(fullName);
+                profileRef.child("Email").setValue(email);
+
                 Snackbar.make(signUpLinearLayout, "User successfully created", Snackbar.LENGTH_LONG).show();
                 Launcher.launchActivity(SignUpActivity.this, SignInActivity.class);
             }

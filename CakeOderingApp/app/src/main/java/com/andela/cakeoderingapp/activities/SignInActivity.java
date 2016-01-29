@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import com.andela.cakeoderingapp.R;
+import com.andela.cakeoderingapp.models.User;
 import com.andela.cakeoderingapp.utilities.Constants;
 import com.andela.cakeoderingapp.utilities.Launcher;
 import com.andela.cakeoderingapp.utilities.SharedPreferenceManager;
@@ -26,6 +27,7 @@ public class SignInActivity extends AppCompatActivity {
     private LinearLayout signInLayout;
     private SharedPreferenceManager sharedPreferenceManager;
     private String email;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +46,8 @@ public class SignInActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        user = new User();
 
         emailEditText = (EditText)findViewById(R.id.email_text);
         passwordEditText = (EditText)findViewById(R.id.password_text);
@@ -71,6 +75,8 @@ public class SignInActivity extends AppCompatActivity {
             @Override
             public void onAuthenticated(AuthData authData) {
 
+                user.setId(authData.getUid());
+                sharedPreferenceManager.saveCurrentId(user.getId());
                 //System.out.println("User ID: " + authData.getUid() + ", Provider: " + authData.getProvider());
                 sharedPreferenceManager.saveCurrentUser(email);
                 Launcher.launchActivity(SignInActivity.this,MainActivity.class);

@@ -7,6 +7,7 @@ public class Cake extends Model {
 
     private Category category;
     private String snapshot;
+    private String price;
 
     public Cake() {
 
@@ -35,5 +36,13 @@ public class Cake extends Model {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
     }
 }
