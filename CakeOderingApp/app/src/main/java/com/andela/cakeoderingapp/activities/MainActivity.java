@@ -1,11 +1,11 @@
 package com.andela.cakeoderingapp.activities;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.andela.cakeoderingapp.R;
 import com.andela.cakeoderingapp.adapter.ViewPagerAdapter;
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,11 +48,17 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        View header = LayoutInflater.from(this).inflate(R.layout.nav_header_main, null);
+
+        navigationView.addHeaderView(header);
+
+        TextView emailText = (TextView)header.findViewById(R.id.email_text);
+
         viewPager = (ViewPager) findViewById(R.id.view_pager);
         setUpViewPager(viewPager);
         tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(viewPager);
-        saveCategories();
+        saveCakes();
     }
     private void setUpViewPager(ViewPager viewPager) {
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
@@ -58,6 +66,7 @@ public class MainActivity extends AppCompatActivity
         viewPagerAdapter.addFragment(new CakeFragment(), "Featured");
         viewPagerAdapter.addFragment(new CakeFragment(), "All");
         viewPager.setAdapter(viewPagerAdapter);
+
     }
 
     @Override
@@ -113,9 +122,9 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void saveCakes() {
-        Cake cake1 = new Cake("002", "Bricoe");
-        cake1.setPrice("N 2,300");
-        cake1.setSnapshot("http://res.cloudinary.com/dzvxhhjz1/image/upload/v1454082911/Categories/holiday_cakes.jpg");
+        Cake cake1 = new Cake("007", "Brown Cheese");
+        cake1.setPrice("N 5,000");
+        cake1.setSnapshot("http://res.cloudinary.com/dzvxhhjz1/image/upload/c_scale,h_375,w_400/v1454064267/cakes/wed006.jpg");
         cake1.setCategory("Wedding cake");
         CakeDatacollection<Cake> col = new CakeDatacollection<>("cakes", Cake.class);
         col.save(cake1, new DataCallback<Cake>() {
@@ -138,22 +147,24 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camara) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
-        }
+//        if (id == R.id.nav_camara) {
+//            // Handle the camera action
+//        } else if (id == R.id.nav_gallery) {
+//
+//        } else if (id == R.id.nav_slideshow) {
+//
+//        } else if (id == R.id.nav_manage) {
+//
+//        } else if (id == R.id.nav_share) {
+//
+//        } else if (id == R.id.nav_send) {
+//
+//        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
 }
